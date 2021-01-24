@@ -3,16 +3,19 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 
 export default function App() {
-  const [enteredGoal,setEnterdGoal]= useState('');
-  const [courseGoals,setCourseGoals]= useState([]);
+  const [enteredGoal, setEnterdGoal] = useState("");
+  const [courseGoals, setCourseGoals] = useState([]);
 
-  const  goalInputHandler = (enteredText) => {
-    setEnterdGoal(enteredText)
-  }
+  const goalInputHandler = (enteredText) => {
+    setEnterdGoal(enteredText);
+  };
 
-  const addGoalHandler = () =>{
-    setCourseGoals(currentCourseGoals => [...currentCourseGoals,enteredGoal]);
-  }
+  const addGoalHandler = () => {
+    setCourseGoals((currentCourseGoals) => [
+      ...currentCourseGoals,
+      enteredGoal,
+    ]);
+  };
 
   return (
     <View style={styles.screen}>
@@ -20,13 +23,17 @@ export default function App() {
         <TextInput
           placeholder="Course Goals"
           style={styles.input}
-          onChangeText = {goalInputHandler}
+          onChangeText={goalInputHandler}
           value={enteredGoal}
         />
-        <Button title="ADD" onPress = {addGoalHandler} />
+        <Button title="ADD" onPress={addGoalHandler} />
       </View>
       <View>
-        {courseGoals.map((goal,index) => <Text key ={index}>{goal}</Text>)}
+        {courseGoals.map((goal, index) => (
+          <View style={styles.listItem} key={index}>
+            <Text >{goal}</Text>
+          </View>
+        ))}
       </View>
     </View>
   );
@@ -41,10 +48,17 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
-  input:{
+  input: {
     borderColor: "black",
     borderWidth: 1,
     padding: 10,
     width: "80%",
-  }
+  },
+  listItem: {
+    padding: 10,
+    backgroundColor: "#ccc",
+    borderColor: "indigo",
+    borderWidth: 1,
+    marginVertical: 2,
+  },
 });
