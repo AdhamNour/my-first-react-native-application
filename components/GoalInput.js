@@ -3,8 +3,8 @@ import { View, TextInput, Button, StyleSheet, Modal } from 'react-native'
 
 const styles = StyleSheet.create({
     inputContainer: {
-        flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "center",
+        flex:1,
         alignItems: "center",
     },
     input: {
@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         padding: 10,
         width: "80%",
+        margin: 5,
     }
 })
 
