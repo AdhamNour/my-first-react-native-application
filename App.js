@@ -10,6 +10,8 @@ import {
   FlatList,
 } from "react-native";
 
+import GoalItem from "./components/GoalItem"
+
 export default function App() {
   const [enteredGoal, setEnterdGoal] = useState("");
   const [courseGoals, setCourseGoals] = useState([]);
@@ -36,19 +38,10 @@ export default function App() {
         />
         <Button title="ADD" onPress={addGoalHandler} />
       </View>
-      {/* <ScrollView  >
-        {courseGoals.map((goal, index) => (
-          <View style={styles.listItem} key={index}>
-            <Text >{goal}</Text>
-          </View>
-        ))}
-      </ScrollView> */}
       <FlatList
         data={courseGoals}
         renderItem={(itemdata) => (
-          <View style={styles.listItem}>
-            <Text>{itemdata.item.value}</Text>
-          </View>
+          <GoalItem title={itemdata.item.value} />
         )}
       />
     </View>
