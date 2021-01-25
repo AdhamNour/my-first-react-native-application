@@ -13,7 +13,16 @@ const styles = StyleSheet.create({
         padding: 10,
         width: "80%",
         margin: 5,
+    },
+    ButtonsView: {
+        flexDirection: 'row',
+        width : "50%",
+        justifyContent: "space-around",
+    },
+    ButtonStyle: {
+        width : "40%"
     }
+    
 })
 
 const goalInput = (props) => {
@@ -34,8 +43,14 @@ const goalInput = (props) => {
                     onChangeText={goalInputHandler}
                     value={enteredGoal}
                 />
-                <Button title="CANCEL" color='red' onPress={props.cancelHandler} />
-                <Button title="ADD" onPress={addGoalHandler} />
+                <View style={styles.ButtonsView}>
+                    <View style={styles.ButtonStyle}>
+                        <Button title="CANCEL" color='red' onPress={props.cancelHandler}  />
+                    </View>
+                    <View style={styles.ButtonStyle}>
+                        <Button title="ADD" onPress={addGoalHandler}  />
+                    </View>
+                </View>
         </View>
         </Modal>
     );
